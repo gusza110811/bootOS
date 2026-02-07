@@ -20,6 +20,12 @@ clean:
 runqemu: os.img
 	qemu-system-i386 -fda os.img
 
+.PHONY: runqemu_ng
+runqemu_ng: os.img
+	qemu-system-i386 -fda os.img --nographic
+
 build: $(main)
-	smlrc $(main) a.asm
-	nasm a.asm -o a.out
+	smlrc $(main) tmp
+	echo "org 0x7C00" | cat - tmp > a.asm
+	$(RM) tmp
+	nasm a.asm -o a.bin

@@ -1,5 +1,9 @@
 #include "bootos.h"
 
 void main() {
-    put('H'); put('I'); put('!'); put('\r');
+    puts("Hello!\r");
+
+    char *input = gets();
+
+    puts(input);
 }

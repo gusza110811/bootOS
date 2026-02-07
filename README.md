@@ -1,5 +1,7 @@
 # bootOS integration to C
-Implement bootos.h for interacting with bootOS syscalls with c
+Implement bootos.h for interacting with bootOS syscalls with C
+
+---
 
      _                 _    ____   _____ 
     | |               | |  / __ \ / ____|

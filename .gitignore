@@ -1,9 +1,10 @@
 .DS_Store
 nasm
-.*
-!/.gitignore
+
 
 *.img
 a.asm
 *.bin
 *.out
+.*
+!/.gitignore
