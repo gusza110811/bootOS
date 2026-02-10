@@ -1,9 +1,14 @@
 #include "bootos.h"
 
 void main() {
-    puts("Hello!\r");
+    puts("test\r");
 
-    char *input = gets();
+    char input[128];
 
-    puts(input);
+    while(1) {
+        put('>');
+        gets(input, sizeof(input));
+
+        puts(input);
+    }
 }

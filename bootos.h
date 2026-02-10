@@ -1,8 +1,8 @@
+#define true 1
+#define false 0
+
 void _start() {
     asm volatile (
-        "mov ax, 0\n"
-        "mov ds, ax\n"
-        "mov es, ax\n"
         "mov ax, 0x7000\n"
         "mov ss, ax\n"
         "mov sp, 0xFFFE\n"
@@ -43,10 +43,9 @@ void puts(char str[]) {
     }
 }
 
-char* gets() {
-    char str[128];
-    char* pointer = &str;
-    char* end = pointer+127;
+void gets(char str[], int size) {
+    char* pointer = str;
+    char* end = pointer+size-1;
 
     char c = '\xff';
 
@@ -55,9 +54,14 @@ char* gets() {
         if (c != '\r' && pointer == end) {
             continue;
         }
+        if (c == '\b') {
+            put(' '); put('\b');
+            pointer--;
+            continue;
+        }
         *pointer = c;
         pointer++;
     }
 
-    return str;
+    *pointer = 0;
 }
